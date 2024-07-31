@@ -1,0 +1,18 @@
+CREATE INDEX idx_long_url ON CLICK_SHOORTENER_LINKS (LONG_URL);
+
+CREATE INDEX idx_tiny_url ON CLICK_SHOORTENER_LINKS (TINY_URL);
+
+CREATE TABLE
+  CLICK_SHOORTENER_LINKS (
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    LONG_URL TEXT,
+    TINY_URL VARCHAR(30)
+  );
+
+  INSERT INTO
+    CLICK_SHOORTENER_LINKS (LONG_URL, TINY_URL)
+  VALUES
+    (
+      'https://supabase.com/dashboard/project/vxauqonvdtodvhgblfix/sql/e561bf7c-7067-4184-b74c-49e83f8f854f',
+      'https://shoort.click/1'
+    );
