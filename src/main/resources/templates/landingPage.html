@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>URL Shortener</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+          rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+<!-- Hero Section -->
+<header class="hero">
+    <div class="container">
+        <h1>Shorten. Share. Track.</h1>
+        <p>The most elegant way to manage your links.</p>
+        <div class="shorten-form">
+            <input placeholder="Enter your URL here" type="text">
+            <button>Shorten URL</button>
+        </div>
+        <!--<a href="#features" class="cta-button">Get Started</a> -->
+        <!-- Add a button to trigger the modal -->
+        <button class="cta-button" onclick="openModal()">Login / Sign Up</button>
+
+    </div>
+</header>
+
+<!-- Features Section -->
+<section class="features" id="features">
+    <div class="container">
+        <div class="feature">
+            <img alt="Easy Link Management" src="easy-link-management.svg">
+            <h2>Easy Link Management</h2>
+            <p>Organize your URLs with ease and efficiency.</p>
+        </div>
+        <div class="feature">
+            <img alt="Detailed Analytics" src="detailed-analytics.svg">
+            <h2>Detailed Analytics</h2>
+            <p>Track clicks and user behavior with powerful analytics.</p>
+        </div>
+        <div class="feature">
+            <img alt="Customizable URLs" src="customizable-urls.svg">
+            <h2>Customizable URLs</h2>
+            <p>Make your URLs more memorable and brandable.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<!--<section class="testimonials">
+    <div class="container">
+        <div class="testimonial-slider">
+            <div class="testimonial-card">
+                <p>"This is the best URL shortener I have ever used!"</p>
+                <div class="user-info">
+                    <img src="user1.jpg" alt="User 1">
+                    <span>John Doe</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p>"The analytics feature is incredibly helpful for my business."</p>
+                <div class="user-info">
+                    <img src="user2.jpg" alt="User 2">
+                    <span>Jane Smith</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section> -->
+<!-- Login/Signup Modal -->
+<div class="modal" id="authModal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="form-container">
+            <div class="form-toggle">
+                <button class="toggle-button active" id="login-toggle">Login</button>
+                <button class="toggle-button" id="signup-toggle">Sign Up</button>
+            </div>
+            <form class="auth-form" id="login-form">
+                <h2>Login</h2>
+                <input placeholder="Email" required type="email">
+                <input placeholder="Password" required type="password">
+                <button class="auth-button" type="submit">Login</button>
+                <p class="switch-form">Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a></p>
+            </form>
+            <form class="auth-form" id="signup-form" style="display: none;">
+                <h2>Sign Up</h2>
+                <input placeholder="Username" required type="text">
+                <input placeholder="Email" required type="email">
+                <input placeholder="Password" required type="password">
+                <button class="auth-button" type="submit">Sign Up</button>
+                <p class="switch-form">Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Call-to-Action Section -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Ready to Get Started?</h2>
+        <!--<a href="#" class="cta-button">Sign Up Now</a>-->
+        <!-- Add a button to trigger the modal -->
+        <button class="cta-button" onclick="openModal()">Login / Sign Up</button>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 URL Shortener. All rights reserved.</p>
+        <ul class="footer-links">
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+        </ul>
+        <ul class="social-media">
+            <li><a href="#"><img alt="Facebook" src="facebook-icon.svg"></a></li>
+            <li><a href="#"><img alt="Twitter" src="twitter-icon.svg"></a></li>
+            <li><a href="#"><img alt="LinkedIn" src="linkedin-icon.svg"></a></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="index.js"></script>
+</body>
+</html>
