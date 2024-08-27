@@ -1,6 +1,6 @@
 # URL Shortener
 
-This project is a URL shortener application built with Spring Boot. It allows users to create shortened versions of long URLs, manage their links, and track usage statistics.
+This project is a URL shortener application built with Spring Boot. It allows users to create shortened versions of long URLs, manage their links, and track usage statistics. It is system design problem that i want to solve. I will follow Alex Xu's system design book to solve this problem.
 
 ## Features
 
