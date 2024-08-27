@@ -140,3 +140,49 @@ window.onclick = function(event) {
 }
 
 
+function shortenUrl() {
+    const longUrl = document.getElementById('longUrl').value;
+    if (!longUrl) {
+        alert('Please enter a URL');
+        return;
+    }
+
+    // Check if the URL is valid
+    const urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+    if (!urlPattern.test(longUrl)) {
+        alert('Please enter a valid URL');
+        return;
+    }
+
+    fetch('/shortUrl', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/plain',
+        },
+        body: longUrl
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('shortenedUrlResult').textContent = data;
+        openShortenedUrlModal();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        if (error instanceof Response) {
+            error.text().then(errorMessage => {
+                alert('An error occurred while shortening the URL: ' + errorMessage);
+            });
+        } else {
+            alert('An error occurred while shortening the URL: ' + error.message);
+        }
+    });
+}
+
+function openShortenedUrlModal() {
+    document.getElementById('shortenedUrlModal').style.display = 'block';
+}
+
+function closeShortenedUrlModal() {
+    document.getElementById('shortenedUrlModal').style.display = 'none';
+}
+
