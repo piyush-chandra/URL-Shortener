@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
 
 @RestController
 public class ShortenerController {
@@ -23,8 +24,8 @@ public class ShortenerController {
     }
 
     @GetMapping("/")
-    public ModelAndView landingPage() {
-        return shortenerService.getLandingPage();
+    public ModelAndView landingPage(Model model) {
+        return shortenerService.getLandingPage(model);
     }
 
     @GetMapping("/{id}")

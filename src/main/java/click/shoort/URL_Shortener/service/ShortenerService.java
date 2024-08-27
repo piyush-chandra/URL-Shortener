@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
 
 import click.shoort.URL_Shortener.model.ClickShortenerLink;
 import click.shoort.URL_Shortener.repository.ClickShortenerLinkRepository;
@@ -22,9 +23,9 @@ public class ShortenerService {
         return "EveryThing is working fine!";
     }
 
-    public ModelAndView getLandingPage() {
+    public ModelAndView getLandingPage(Model model) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("landingPage");
+        modelAndView.setViewName("index");
         return modelAndView;
     }
 
