@@ -111,4 +111,32 @@ window.addEventListener('click', (e) => {
     }
 });
 
+// Terms of Service Modal
+function openTermsModal() {
+    document.getElementById('termsModal').style.display = 'block';
+}
+
+function closeTermsModal() {
+    document.getElementById('termsModal').style.display = 'none';
+}
+
+// Privacy Policy Modal
+function openPrivacyModal() {
+    document.getElementById('privacyModal').style.display = 'block';
+}
+
+function closePrivacyModal() {
+    document.getElementById('privacyModal').style.display = 'none';
+}
+
+// Close modals when clicking outside
+window.onclick = function(event) {
+    if (event.target == document.getElementById('termsModal')) {
+        closeTermsModal();
+    }
+    if (event.target == document.getElementById('privacyModal')) {
+        closePrivacyModal();
+    }
+}
+
 

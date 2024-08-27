@@ -21,53 +21,40 @@
         </div>
         <!-- Add a button to trigger the modal -->
         <button class="cta-button" onclick="openModal()">Login / Sign Up</button>
-
     </div>
 </header>
 
-<!-- Features Section -->
-<section class="features" id="features">
+<!-- User Profile Section -->
+<section class="user-profile" id="userProfile" style="display: none;">
     <div class="container">
-        <div class="feature">
-            <img alt="Easy Link Management" src="easy-link-management.svg">
-            <h2>Easy Link Management</h2>
-            <p>Organize your URLs with ease and efficiency.</p>
-        </div>
-        <div class="feature">
-            <img alt="Detailed Analytics" src="detailed-analytics.svg">
-            <h2>Detailed Analytics</h2>
-            <p>Track clicks and user behavior with powerful analytics.</p>
-        </div>
-        <div class="feature">
-            <img alt="Customizable URLs" src="customizable-urls.svg">
-            <h2>Customizable URLs</h2>
-            <p>Make your URLs more memorable and brandable.</p>
+        <h2>Welcome, <span id="username"></span>!</h2>
+        <div class="user-links">
+            <h3>Your Shortened URLs</h3>
+            <ul id="userLinks">
+                <!-- User's shortened links will be dynamically added here -->
+            </ul>
         </div>
     </div>
 </section>
 
-<!-- Testimonials Section -->
-<!--<section class="testimonials">
+<!-- Features Section -->
+<section class="features" id="features">
     <div class="container">
-        <div class="testimonial-slider">
-            <div class="testimonial-card">
-                <p>"This is the best URL shortener I have ever used!"</p>
-                <div class="user-info">
-                    <img src="user1.jpg" alt="User 1">
-                    <span>John Doe</span>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <p>"The analytics feature is incredibly helpful for my business."</p>
-                <div class="user-info">
-                    <img src="user2.jpg" alt="User 2">
-                    <span>Jane Smith</span>
-                </div>
-            </div>
-
+        <div class="feature" style="background-color: #e6f7ff; border-radius: 10px; padding: 20px; margin-bottom: 10px;">
+            <h2 style="color: #0066cc;">Easy Link Management</h2>
+            <p style="color: #333;">Organize your URLs with ease and efficiency.</p>
+        </div>
+        <div class="feature" style="background-color: #fff0f5; border-radius: 10px; padding: 20px; margin-bottom: 10px;">
+            <h2 style="color: #cc0066;">Detailed Analytics</h2>
+            <p style="color: #333;">Track clicks and user behavior with powerful analytics.</p>
+        </div>
+        <div class="feature" style="background-color: #f0fff0; border-radius: 10px; padding: 20px; margin-bottom: 10px;">
+            <h2 style="color: #006600;">Customizable URLs</h2>
+            <p style="color: #333;">Make your URLs more memorable and brandable.</p>
         </div>
     </div>
-</section> -->
+</section>
+
 <!-- Login/Signup Modal -->
 <div class="modal" id="authModal">
     <div class="modal-content">
@@ -96,7 +83,6 @@
     </div>
 </div>
 
-
 <!-- Call-to-Action Section -->
 <section class="cta-section">
     <div class="container">
@@ -111,16 +97,65 @@
     <div class="container">
         <p>&copy; 2024 URL Shortener. All rights reserved.</p>
         <ul class="footer-links">
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#" onclick="openTermsModal()">Terms of Service</a></li>
+            <li><a href="#" onclick="openPrivacyModal()">Privacy Policy</a></li>
         </ul>
         <ul class="social-media">
-            <li><a href="#"><img alt="Facebook" src="facebook-icon.svg"></a></li>
-            <li><a href="#"><img alt="Twitter" src="twitter-icon.svg"></a></li>
-            <li><a href="#"><img alt="LinkedIn" src="linkedin-icon.svg"></a></li>
+            <li><a href="https:/x.com/piyushstwt" target="_blank" rel="noopener noreferrer"><img alt="Twitter" src="/images/twitter-icon.svg" width="24" height="24"></a></li>
+            <li><a href="https://www.linkedin.com/in/piyush-chandra-422572170/" target="_blank" rel="noopener noreferrer"><img alt="LinkedIn" src="/images/linkedin-icon.svg" width="24" height="24"></a></li>
         </ul>
     </div>
 </footer>
+
+<!-- Terms of Service Modal -->
+<div id="termsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeTermsModal()">&times;</span>
+        <h2>Terms of Service</h2>
+        <div class="modal-body">
+            <h4>1. Acceptance of Terms</h4>
+            <p>By using our service, you agree to these Terms.</p>
+            <h4>2. Service Description</h4>
+            <p>We provide URL shortening. We may modify or discontinue the service anytime.</p>
+            <h4>3. User Conduct</h4>
+            <p>Do not use our service for unlawful purposes.</p>
+            <h4>4. Intellectual Property</h4>
+            <p>Our service and content are protected by intellectual property laws.</p>
+            <h4>5. Termination</h4>
+            <p>We may terminate your access for any reason, including Terms violation.</p>
+            <h4>6. Liability Limitation</h4>
+            <p>We're not liable for indirect damages from your use of the service.</p>
+            <h4>7. Changes</h4>
+            <p>We may modify these Terms. Continued use means you accept changes.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Privacy Policy Modal -->
+<div id="privacyModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closePrivacyModal()">&times;</span>
+        <h2>Privacy Policy</h2>
+        <div class="modal-body">
+            <h4>1. Information Collection</h4>
+            <p>We collect data you provide when using our service, including account details and shortened URLs.</p>
+            <h4>2. Information Usage</h4>
+            <p>We use collected data to provide, improve, and maintain our services, and for legal compliance.</p>
+            <h4>3. Information Sharing</h4>
+            <p>We don't sell your data. We may share it with service providers or when legally required.</p>
+            <h4>4. Data Security</h4>
+            <p>We use security measures to protect your data, but no online method is 100% secure.</p>
+            <h4>5. User Rights</h4>
+            <p>You may have rights to access, correct, or delete your data, depending on your location.</p>
+            <h4>6. Cookies Usage</h4>
+            <p>We use cookies and similar technologies for data collection and advertising purposes.</p>
+            <h4>7. Policy Updates</h4>
+            <p>We may update this policy and will post changes on this page.</p>
+            <h4>8. Contact Information</h4>
+            <p>For questions about this policy, contact privacy@urlshortener.com.</p>
+        </div>
+    </div>
+</div>
 
 <script th:src="@{/js/index.js}"></script>
 </body>
