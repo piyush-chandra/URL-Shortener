@@ -13,6 +13,10 @@ FROM eclipse-temurin:22-jdk
 
 WORKDIR /app
 
+ENV DATABASE_URL=jdbc:postgresql://<DB_HOST>:<DB_PORT>/<DB_NAME>
+ENV DATABASE_USERNAME=<DB_USERNAME>
+ENV DATABASE_PASSWORD=<DB_PASSWORD>
+
 COPY --from=build /app/target/URL-Shortener-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 42069
