@@ -1,4 +1,4 @@
-FROM maven:3.8.8-openjdk-22 AS build
+FROM maven:3.9.9-eclipse-temurin-22 AS build
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-FROM openjdk:22-slim
+FROM eclipse-temurin:22-jdk
 
 WORKDIR /app
 
