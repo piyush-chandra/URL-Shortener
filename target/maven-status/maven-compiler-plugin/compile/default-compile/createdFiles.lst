@@ -1,0 +1,5 @@
+click\shoort\URL_Shortener\model\ClickShortenerLink.class
+click\shoort\URL_Shortener\repository\ClickShortenerLinkRepository.class
+click\shoort\URL_Shortener\service\ShortenerService.class
+click\shoort\URL_Shortener\controller\ShortenerController.class
+click\shoort\URL_Shortener\UrlShortenerApplication.class

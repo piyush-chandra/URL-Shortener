@@ -1,0 +1,430 @@
+/* styles.css */
+
+/* Global Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #6d5dfc, #47c7c5);
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.25em;
+    margin-bottom: 40px;
+}
+
+.shorten-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.shorten-form input {
+    padding: 15px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    width: 60%;
+}
+
+.shorten-form button {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 0 30px 30px 0;
+    background-color: #f56262;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.shorten-form button:hover {
+    background-color: #c34b4b;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    background-color: #f56262;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+    background-color: #c34b4b;
+}
+
+/* Features Section */
+.features {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.features .feature {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.features img {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.features h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.75em;
+    margin-bottom: 15px;
+}
+
+.features p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 80px 0;
+    background-color: #f4f4f4;
+}
+
+.testimonial-slider {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.testimonial-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-right: 20px;
+    min-width: 300px;
+    text-align: center;
+}
+
+.testimonial-card p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-info img {
+    border-radius: 50%;
+    width: 50px;
+    margin-right: 10px;
+}
+
+.user-info span {
+    font-weight: 600;
+}
+
+/* Call-to-Action Section */
+.cta-section {
+    background-color: #47c7c5;
+    color: white;
+    text-align: center;
+    padding: 60px 0;
+}
+
+.cta-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-links,
+.social-media {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footer-links li,
+.social-media li {
+    margin: 0 15px;
+}
+
+.footer-links a,
+.social-media a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover,
+.social-media a:hover {
+    color: #f56262;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1, 
+.hero p,
+.shorten-form,
+.cta-button {
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.feature img {
+    animation: fadeInUp 1.2s ease-in-out;
+}
+
+.feature h2 {
+    animation: fadeInUp 1.4s ease-in-out;
+}
+
+.feature p {
+    animation: fadeInUp 1.6s ease-in-out;
+}
+
+.testimonial-card {
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+.cta-section h2 {
+    animation: fadeInUp 1.3s ease-in-out;
+}
+
+.footer {
+    animation: fadeInUp 1s ease-in-out;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .features {
+        text-align: center;
+    }
+
+    .features .feature {
+        margin-bottom: 30px;
+    }
+
+    .testimonial-card {
+        margin-right: 0;
+        min-width: auto;
+    }
+}
+
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    margin-top: 20px;
+}
+
+
+/* Modal Background */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+    backdrop-filter: blur(10px); /* Glassy effect */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 40px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5em;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Form Container */
+.form-container {
+    text-align: center;
+}
+
+/* Toggle Buttons */
+.form-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.toggle-button {
+    background-color: #f4f4f4;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.toggle-button.active {
+    background-color: #6d5dfc;
+    color: white;
+}
+
+/* Authentication Forms */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form h2 {
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}
+
+.auth-form input {
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    width: 100%;
+}
+
+.auth-button {
+    padding: 15px;
+    font-size: 1.1em;
+    background-color: #47c7c5;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.auth-button:hover {
+    background-color: #3aa7a1;
+}
+
+/* Switch Form Text */
+.switch-form {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.switch-form a {
+    color: #6d5dfc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

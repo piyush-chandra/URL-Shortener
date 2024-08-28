@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="icon" type="image/png" th:href="@{/images/url-shortener-icon.png}">
+    <style>
+        /* Mobile-friendly styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .shorten-form {
+                flex-direction: column;
+            }
+            .shorten-form input,
+            .shorten-form button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .feature {
+                margin-bottom: 20px;
+            }
+            .footer-links,
+            .social-media {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-links li,
+            .social-media li {
+                margin-bottom: 10px;
+            }
+            .modal-content {
+                width: 90%;
+                max-width: none;
+            }
+            .url-container {
+                flex-direction: column;
+            }
+            #shortenedUrlResult,
+            .copy-btn {
+                width: 100%;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            .share-options {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Hero Section -->
+<header class="hero">
+    <div class="container">
+        <h1>Shorten. Share. Track.</h1>
+        <p>The most elegant way to manage your links.</p>
+        <div class="shorten-form">
+            <input id="longUrl" placeholder="Enter your URL here" type="text">
+            <button onclick="shortenUrl()">Shorten URL</button>
+        </div>
+        <!-- Add a button to trigger the modal -->
+        <button class="cta-button" onclick="openModal()">Login / Sign Up</button>
+    </div>
+</header>
+
+<!-- User Profile Section -->
+<section class="user-profile" id="userProfile" style="display: none;">
+    <div class="container">
+        <h2>Welcome, <span id="username"></span>!</h2>
+        <div class="user-links">
+            <h3>Your Shortened URLs</h3>
+            <ul id="userLinks">
+                <!-- User's shortened links will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features" id="features">
+    <div class="container">
+        <div class="feature" style="background-color: #e6f7ff; border-radius: 10px; padding: 20px; margin-bottom: 10px;">
+            <h2 style="color: #0066cc;">Easy Link Management</h2>
+            <p style="color: #333;">Organize your URLs with ease and efficiency.</p>
+        </div>
+        <div class="feature" style="background-color: #fff0f5; border-radius: 10px; padding: 20px; margin-bottom: 10px;">
+            <h2 style="color: #cc0066;">Detailed Analytics</h2>
+            <p style="color: #333;">Track clicks and user behavior with powerful analytics.</p>
+        </div>
+        <div class="feature" style="background-color: #f0fff0; border-radius: 10px; padding: 20px; margin-bottom: 10px;">
+            <h2 style="color: #006600;">Customizable URLs</h2>
+            <p style="color: #333;">Make your URLs more memorable and brandable.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Login/Signup Modal -->
+<div class="modal" id="authModal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="form-container">
+            <div class="form-toggle">
+                <button class="toggle-button active" id="login-toggle">Login</button>
+                <button class="toggle-button" id="signup-toggle">Sign Up</button>
+            </div>
+            <form class="auth-form" id="login-form">
+                <h2>Login</h2>
+                <input placeholder="Email" required type="email">
+                <input placeholder="Password" required type="password">
+                <button class="auth-button" type="submit">Login</button>
+                <p class="switch-form">Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a></p>
+            </form>
+            <form class="auth-form" id="signup-form" style="display: none;">
+                <h2>Sign Up</h2>
+                <input placeholder="Username" required type="text">
+                <input placeholder="Email" required type="email">
+                <input placeholder="Password" required type="password">
+                <button class="auth-button" type="submit">Sign Up</button>
+                <p class="switch-form">Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Call-to-Action Section -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Ready to Get Started?</h2>
+        <!-- Add a button to trigger the modal -->
+        <button class="cta-button" onclick="openModal()">Login / Sign Up</button>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 URL Shortener. All rights reserved.</p>
+        <ul class="footer-links">
+            <li><a href="#" onclick="openTermsModal()">Terms of Service</a></li>
+            <li><a href="#" onclick="openPrivacyModal()">Privacy Policy</a></li>
+        </ul>
+        <ul class="social-media">
+            <li><a href="https:/x.com/piyushstwt" target="_blank" rel="noopener noreferrer"><img alt="Twitter" src="/images/twitter-icon.svg" width="24" height="24"></a></li>
+            <li><a href="https://www.linkedin.com/in/piyush-chandra-422572170/" target="_blank" rel="noopener noreferrer"><img alt="LinkedIn" src="/images/linkedin-icon.svg" width="24" height="24"></a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- Terms of Service Modal -->
+<div id="termsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeTermsModal()">&times;</span>
+        <h2>Terms of Service</h2>
+        <div class="modal-body">
+            <h4>1. Acceptance of Terms</h4>
+            <p>By using our service, you agree to these Terms.</p>
+            <h4>2. Service Description</h4>
+            <p>We provide URL shortening. We may modify or discontinue the service anytime.</p>
+            <h4>3. User Conduct</h4>
+            <p>Do not use our service for unlawful purposes.</p>
+            <h4>4. Intellectual Property</h4>
+            <p>Our service and content are protected by intellectual property laws.</p>
+            <h4>5. Termination</h4>
+            <p>We may terminate your access for any reason, including Terms violation.</p>
+            <h4>6. Liability Limitation</h4>
+            <p>We're not liable for indirect damages from your use of the service.</p>
+            <h4>7. Changes</h4>
+            <p>We may modify these Terms. Continued use means you accept changes.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Privacy Policy Modal -->
+<div id="privacyModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closePrivacyModal()">&times;</span>
+        <h2>Privacy Policy</h2>
+        <div class="modal-body">
+            <h4>1. Information Collection</h4>
+            <p>We collect data you provide when using our service, including account details and shortened URLs.</p>
+            <h4>2. Information Usage</h4>
+            <p>We use collected data to provide, improve, and maintain our services, and for legal compliance.</p>
+            <h4>3. Information Sharing</h4>
+            <p>We don't sell your data. We may share it with service providers or when legally required.</p>
+            <h4>4. Data Security</h4>
+            <p>We use security measures to protect your data, but no online method is 100% secure.</p>
+            <h4>5. User Rights</h4>
+            <p>You may have rights to access, correct, or delete your data, depending on your location.</p>
+            <h4>6. Cookies Usage</h4>
+            <p>We use cookies and similar technologies for data collection and advertising purposes.</p>
+            <h4>7. Policy Updates</h4>
+            <p>We may update this policy and will post changes on this page.</p>
+            <h4>8. Contact Information</h4>
+            <p>For questions about this policy, contact privacy@urlshortener.com.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Add this modal for displaying the shortened URL -->
+<div id="shortenedUrlModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeShortenedUrlModal()">&times;</span>
+        <h2>Your Shortened URL is Ready!</h2>
+        <div class="url-container">
+            <input type="text" id="shortenedUrlResult" readonly>
+            <button onclick="copyToClipboard()" class="copy-btn">
+                <i class="fas fa-copy"></i> Copy
+            </button>
+        </div>
+        <div class="share-options">
+            <button class="share-btn facebook"><i class="fab fa-facebook-f"></i></button>
+            <button class="share-btn twitter"><i class="fab fa-twitter"></i></button>
+            <button class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal-content {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+    .modal-content h2 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+    .url-container {
+        display: flex;
+        margin-bottom: 20px;
+    }
+    #shortenedUrlResult {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px 0 0 5px;
+        font-size: 16px;
+    }
+    .copy-btn {
+        padding: 10px 15px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .copy-btn:hover {
+        background-color: #45a049;
+    }
+    .share-options {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    .share-btn {
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+    .share-btn:hover {
+        transform: scale(1.1);
+    }
+    .facebook { background-color: #3b5998; }
+    .twitter { background-color: #1da1f2; }
+    .linkedin { background-color: #0077b5; }
+</style>
+
+<script>
+    function copyToClipboard() {
+        var copyText = document.getElementById("shortenedUrlResult");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        alert("Copied the URL: " + copyText.value);
+    }
+</script>
+
+<script th:src="@{/js/index.js}"></script>
+</body>
+</html>
