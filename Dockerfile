@@ -23,7 +23,6 @@
 
 # ENTRYPOINT ["java", "-jar", "app.jar"]
 
-
 FROM openjdk:22-slim
 
 WORKDIR /app
