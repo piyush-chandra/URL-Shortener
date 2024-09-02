@@ -161,21 +161,11 @@ function shortenUrl() {
         },
         body: longUrl
     })
-    .then(response => {console.log(response.status); 
-        if (response.status === 200) {
-            return response.text();
-        }
-        else{
-            alert("Error: " + response.statusText);
-            return "";
-        }
-        })
+    .then(response => {console.log(response); 
+        return response.text()})
     .then(data => {
-        if(data){
-            console.log(data);  
-            document.getElementById('shortenedUrlResult').value =data;
-            openShortenedUrlModal();
-        }
+        document.getElementById('shortenedUrlResult').textContent = data;
+        openShortenedUrlModal();
     })
     .catch(error => {
         console.error('Error:', error);
@@ -190,7 +180,6 @@ function shortenUrl() {
 }
 
 function openShortenedUrlModal() {
-    console.log("Opening shortened URL modal");
     document.getElementById('shortenedUrlModal').style.display = 'block';
 }
 
@@ -203,5 +192,5 @@ function copyToClipboard() {
     copyText.select();
     copyText.setSelectionRange(0, 99999);
     document.execCommand("copy");
-    // alert("Copied the URL: " + copyText.value);
+    alert("Copied the URL: " + copyText.value);
 }
