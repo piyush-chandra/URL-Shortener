@@ -161,7 +161,8 @@ function shortenUrl() {
         },
         body: longUrl
     })
-    .then(response => response.text())
+    .then(response => {console.log(response); 
+        return response.text()})
     .then(data => {
         document.getElementById('shortenedUrlResult').textContent = data;
         openShortenedUrlModal();
@@ -186,3 +187,10 @@ function closeShortenedUrlModal() {
     document.getElementById('shortenedUrlModal').style.display = 'none';
 }
 
+function copyToClipboard() {
+    var copyText = document.getElementById("shortenedUrlResult");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    alert("Copied the URL: " + copyText.value);
+}
