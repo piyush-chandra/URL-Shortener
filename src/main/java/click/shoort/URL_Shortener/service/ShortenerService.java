@@ -57,7 +57,7 @@ public class ShortenerService {
         link1.setTinyUrl(tinyUrl);
         clickShortenerLinkRepository.save(link1);
 
-        String shortenedUrl = "localhost:42069/" + tinyUrl;
+        String shortenedUrl = "shoort.click/" + tinyUrl;
         return shortenedUrl;
     }
 
