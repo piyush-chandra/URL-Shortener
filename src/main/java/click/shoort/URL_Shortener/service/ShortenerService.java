@@ -44,7 +44,7 @@ public class ShortenerService {
         //first check if the url is already in the database
         ClickShortenerLink link = clickShortenerLinkRepository.findByLongUrl(originalUrl);
         if (link != null) {
-            return "localhost:42069/" + link.getTinyUrl();
+            return "shoort.click/" + link.getTinyUrl();
         }
 
         ClickShortenerLink newlink = new ClickShortenerLink();
