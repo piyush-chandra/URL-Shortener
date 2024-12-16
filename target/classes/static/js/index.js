@@ -161,12 +161,17 @@ function shortenUrl() {
         },
         body: longUrl
     })
-    .then(response => {console.log(response); 
-        return response.text()})
-    .then(data => {
-        document.getElementById('shortenedUrlResult').textContent = data;
-        openShortenedUrlModal();
-    })
+        .then(response => {
+            console.log("reponse from backend :: " + response);
+            console.log("reponse from backend :: " + response.text);
+            return response.text()
+        })
+        .then(data => {
+            console.log('Shortened URL:', data);
+            openShortenedUrlModal();
+            document.getElementById('shortenedUrlResult').value = data;
+            console.log(document.getElementById('shortenedUrlResult'));
+        })
     .catch(error => {
         console.error('Error:', error);
         if (error instanceof Response) {
@@ -192,5 +197,4 @@ function copyToClipboard() {
     copyText.select();
     copyText.setSelectionRange(0, 99999);
     document.execCommand("copy");
-    alert("Copied the URL: " + copyText.value);
 }
