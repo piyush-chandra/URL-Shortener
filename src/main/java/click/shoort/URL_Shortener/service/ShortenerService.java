@@ -19,8 +19,8 @@ public class ShortenerService {
     @Autowired
     private ClickShortenerLinkRepository clickShortenerLinkRepository;
 
-    public String healthCheck() {
-        return "EveryThing is working fine!";
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("EveryThing is working fine!");
     }
 
     public ModelAndView getLandingPage(Model model) {
@@ -40,11 +40,11 @@ public class ShortenerService {
     }
 
     @Transactional
-    public String shortenUrl(String originalUrl) {
+    public ResponseEntity<String> shortenUrl(String originalUrl) {
         //first check if the url is already in the database
         ClickShortenerLink link = clickShortenerLinkRepository.findByLongUrl(originalUrl);
         if (link != null) {
-            return "shoort.click/" + link.getTinyUrl();
+            return ResponseEntity.ok("shoort.click/" + link.getTinyUrl());
         }
 
         ClickShortenerLink newlink = new ClickShortenerLink();
@@ -58,7 +58,7 @@ public class ShortenerService {
         clickShortenerLinkRepository.save(link1);
 
         String shortenedUrl = "shoort.click/" + tinyUrl;
-        return shortenedUrl;
+        return ResponseEntity.ok(shortenedUrl);
     }
 
 }

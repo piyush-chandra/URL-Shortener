@@ -19,7 +19,7 @@ public class ShortenerController {
     private ShortenerService shortenerService;
 
     @GetMapping("/healthCheck")
-    public String healthCheck() {
+    public ResponseEntity<String> healthCheck() {
         return shortenerService.healthCheck();
     }
 
@@ -34,7 +34,7 @@ public class ShortenerController {
     }
 
     @PostMapping("/shortUrl")
-    public String shortenUrl(@RequestBody String originalUrl) {
+    public ResponseEntity<String> shortenUrl(@RequestBody String originalUrl) {
         return shortenerService.shortenUrl(originalUrl);
     }
 }
