@@ -148,11 +148,11 @@ function shortenUrl() {
     }
 
     // Check if the URL is valid
-    const urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
-    if (!urlPattern.test(longUrl)) {
-        alert('Please enter a valid URL');
-        return;
-    }
+    // const urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+    // if (!urlPattern.test(longUrl)) {
+    //     alert('Please enter a valid URL');
+    //     return;
+    // }
 
     fetch('/shortUrl', {
         method: 'POST',

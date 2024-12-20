@@ -40,7 +40,7 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
     deploy:
       mode: replicated
-      replicas: 3
+      replicas: 1
     restart: always
 volumes:
   letsencrypt:
